@@ -14,14 +14,18 @@ image = modal.Image.debian_slim().pip_install(
 app = modal.App(name="finalgen_app")
 
 @app.function(image=image, gpu="A10G")
-def generate_image(prompt, negative_prompt="", steps=50, guidance_scale=12, width=1980, height=1080, seed=None):
+def generate_image(prompt, negative_prompt="", steps=50, guidance_scale=9, width=1920, height=1080, seed=None):
     import torch
-    from diffusers import StableDiffusionPipeline
+    from diffusers import DiffusionPipeline
 
 
 # LOADS THE DIFFUSION PIPELINE
 
-    pipe = StableDiffusionPipeline.from_pretrained("runwayml/stable-diffusion-v1-5", torch_dtype=torch.float16)
+    # pipe = StableDiffusionPipeline.from_pretrained("runwayml/stab", torch_dtype=torch.float16)
+    pipe = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", 
+                                            torch_dtype=torch.float16,
+                                            use_safetensors=True, 
+                                            variant="fp16")
     pipe.to("cuda")
 
     generator = torch.Generator(device="cuda").manual_seed(seed) if seed else None
@@ -67,41 +71,41 @@ def main_generate_image(script_path,images_output_path):
     
 
 # GENERATING THE IMAGES 
+    with modal.enable_output():
+        with app.run():
+            # Looping Through the Scenes
+            for idx, scene in enumerate(data["visual_script"]):
+                try:
+                    prompt = scene["prompt"]
+                    timestamp = scene.get("timestamp", f"{idx:03d}")
+                    negative_prompt = scene.get("negative_prompt", "")
+                    steps = scene.get("steps", 50)
+                    guidance_scale = scene.get("guidance_scale", 12)
+                    # width = scene.get("width", 1024)
+                    width = 1920
+                    # height = scene.get("height", 576)
+                    height = 1080
+                    seed = scene.get("seed", None)
 
-    with app.run():
-        # Looping Through the Scenes
-        for idx, scene in enumerate(data["visual_script"]):
-            try:
-                prompt = scene["prompt"]
-                timestamp = scene.get("timestamp", f"{idx:03d}")
-                negative_prompt = scene.get("negative_prompt", "")
-                steps = scene.get("steps", 50)
-                guidance_scale = scene.get("guidance_scale", 12)
-                # width = scene.get("width", 1024)
-                width = 1920
-                # height = scene.get("height", 576)
-                height = 1080
-                seed = scene.get("seed", None)
+                    scene_id = timestamp.replace(":", "-")
 
-                scene_id = timestamp.replace(":", "-")
-
-                image_data = generate_image.remote(prompt, negative_prompt, steps, guidance_scale, width, height, seed)
+                    image_data = generate_image.remote(prompt, negative_prompt, steps, guidance_scale, width, height, seed)
 
 
-# SAVING THE IMAGES IN THE OUTPUT DIRECTORY
+    # SAVING THE IMAGES IN THE OUTPUT DIRECTORY
 
-                file_path = os.path.join(images_output_path, f"scene_{scene_id}.png")
-                with open(file_path, "wb") as f:
-                    f.write(image_data)
+                    file_path = os.path.join(images_output_path, f"scene_{scene_id}.png")
+                    with open(file_path, "wb") as f:
+                        f.write(image_data)
 
-                print(f"Saved: {file_path}")
+                    print(f"Saved: {file_path}")
 
-                time.sleep(2)
+                    time.sleep(2)
 
-            except Exception as e:
-                print(f"Error processing scene {idx}: {e}")
+                except Exception as e:
+                    print(f"Error processing scene {idx}: {e}")
 
-    print("Done.")
+        print("Done.")
 
 # if __name__ == "__main__":
 #     main_generate_image(script_path=script_path,images_output_path=images_output_path)

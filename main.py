@@ -3,6 +3,7 @@ import json
 from diffusion.scripts.generate_image import main_generate_image
 from tts.scripts.generate_audio import main_generate_audio
 from assembly.scripts.assembly_video import create_video,create_complete_srt,extract_topic_from_json
+import os
 '''
 TODO: 1. Make a main.py where all pipelines are invoked at once.
 TODO: 2. Take the prompt for the video as user input. 
@@ -11,13 +12,19 @@ TODO: 4. All gpu related tasks must be performed on modal. Works
 '''
 if __name__ == "__main__":
     # Update folder paths as needed.
-    script_path = "resources/scripts/script.json"
+    script_path = "resources/scripts/script3.json"
     images_path = "resources/images/"
+    os.makedirs(images_path, exist_ok=True)
     audio_path = "resources/audio/"
+    os.makedirs(audio_path, exist_ok=True)
     font_path = "Samples/font/font.ttf"
     
     # 1. Generate the Script
-    generator = VideoScriptGenerator(api_key="Enter_API_key", serp_api_key="Enter_Serp_API_key")
+    gem_api = ""
+    serp_api = "Enter your Sper API Key here"
+    if not gem_api or serp_api:
+        raise ValueError("API Key not provided !\n Please Create your api key at : \n Serp APi : https://serpapi.com \n Gemini API : https://aistudio.google.com/apikey")
+    generator = VideoScriptGenerator(api_key=gem_api,serp_api_key=serp_api)
     
     try:
         topic = input("Enter the topic of the video : "),
@@ -53,8 +60,9 @@ if __name__ == "__main__":
     
     # Video Assembly
     topic = extract_topic_from_json(script_path)
-    sub_output_file = f"resources/subtitles/{topic.split(' ')[0]}.srt"
-    video_file = f"resources/video/{topic.split(' ')[0]}.mp4"
+    topic = "_".join(topic.split(' ')[:1])
+    sub_output_file = f"resources/subtitles/{topic}.srt"
+    video_file = f"resources/video/{topic}.mp4"
     
     # 5. Create subtitles in a .srt file
     create_complete_srt(script_folder = script_path,
