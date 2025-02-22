@@ -80,7 +80,8 @@ def main_generate_image(script_path,images_output_path):
                     timestamp = scene.get("timestamp", f"{idx:03d}")
                     negative_prompt = scene.get("negative_prompt", "")
                     steps = scene.get("steps", 50)
-                    guidance_scale = scene.get("guidance_scale", 12)
+                    # guidance_scale = scene.get("guidance_scale", 12)
+                    guidance_scale = 9
                     # width = scene.get("width", 1024)
                     width = 1920
                     # height = scene.get("height", 576)
