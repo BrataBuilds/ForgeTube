@@ -4,6 +4,7 @@
 <p align="center"> <img src="https://avatars.githubusercontent.com/u/79008924?s=280&v=4">
 </p>
 
+![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/mlsakiit)
 
 # ForgeTube Video Assembler
 The current video assembler, built using **`MoviePy`** (which relies on **`FFmpeg`** for video processing), takes all images from the ***Images*** folder and all audio files from the** *Audio*** folder and combines them into a single video. Each image is displayed for the exact duration of its corresponding audio file, ensuring perfect synchronisation between visuals and sound.  
