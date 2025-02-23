@@ -3,12 +3,12 @@
 </a>
 <p align="center"> <img src="https://avatars.githubusercontent.com/u/79008924?s=280&v=4">
 </p>
-[![GitHub](https://img.shields.io/badge/GitHub-MLSA_KIIT-black?style=flat&logo=github)](https://github.com/MLSAKIIT)
-[![X](https://img.shields.io/badge/X-MLSA_KIIT-black?style=flat&logo=x)](https://x.com/mlsakiit)
-[![Instagram](https://img.shields.io/badge/Instagram-MLSA_KIIT-E4405F?style=flat&logo=instagram)](https://www.instagram.com/mlsakiit/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-MLSA_KIIT-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/company/msckiit/mycompany/)
-[![Discord](https://img.shields.io/badge/Discord-MLSA_KIIT-5865F2?style=flat&logo=discord)](https://discord.com/invite/P6VCP2Ry3q)
-[![ForgeTube](https://img.shields.io/badge/GitHub-ForgeTube-black?style=flat&logo=github)](https://github.com/MLSAKIIT/ForgeTube)
+[GitHub](https://img.shields.io/badge/GitHub-MLSA_KIIT-black?style=flat&logo=github)](https://github.com/MLSAKIIT)
+[X](https://img.shields.io/badge/X-MLSA_KIIT-black?style=flat&logo=x)](https://x.com/mlsakiit)
+[Instagram](https://img.shields.io/badge/Instagram-MLSA_KIIT-E4405F?style=flat&logo=instagram)](https://www.instagram.com/mlsakiit/)
+[LinkedIn](https://img.shields.io/badge/LinkedIn-MLSA_KIIT-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/company/msckiit/mycompany/)
+[Discord](https://img.shields.io/badge/Discord-MLSA_KIIT-5865F2?style=flat&logo=discord)](https://discord.com/invite/P6VCP2Ry3q)
+[ForgeTube](https://img.shields.io/badge/GitHub-ForgeTube-black?style=flat&logo=github)](https://github.com/MLSAKIIT/ForgeTube)
 
 
 # ForgeTube Video Assembler
