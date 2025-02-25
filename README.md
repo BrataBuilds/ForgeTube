@@ -131,11 +131,10 @@ Navigate to [Google AI Studio](https://aistudio.google.com/). Once
 1. **Generate API Key**: Click on the "Create API key" button. You'll be prompted to choose between creating a new project or selecting an existing one. Make your selection accordingly.
 2. **Retrieve the Key**: Once generated, your unique API key will be displayed. Ensure you copy and store it in a secure location.
 
-**Step 4: Add your Key in `main.py` or `local_main.py`**
-```python
-# 1. Generate the Script
-gem_api = "Enter your Gemini API Key here"
-serp_api = "Enter your Serp API key here"
+**Step 4: Add your Key in `secrets.txt` **
+```
+gemini = Enter your Gemini API key Here
+serp = Enter your serp API key Here
 ```
 
 > [!IMPORTANT]  
@@ -154,7 +153,7 @@ serp_api = "Enter your Serp API key here"
 ### 5. `Kokoro` 
 Run the following commands :
 ```bash
-python -m pip install spacy # If not insatlled for some reason
+pip install spacy # If not installed for some reason
 python -m spacy download en_core_web_sm
 ```
 ### 6. Download and setup FFmpeg
@@ -164,7 +163,7 @@ python -m spacy download en_core_web_sm
 4. Make a directory at `C:\Program Files\FFmpeg`.
 5. Copy all the files in the directory.
 6. Add `C:\Program Files\FFmpeg\bin` to your `PATH` environment variable.
-7. 
+
 ### 7. Start Generating :
 Use `main.py` for running the image generation on Modal or use `main_local.py` to run Stable diffusion XL Locally.
 
@@ -192,11 +191,13 @@ video_file = "name of the video.mp4 or .mkv"
 4. **`no module named pip found`** 
 Try running the following :
 ```bash
-python -m pip install spacy pydub kokoro soundfile torch
+uv add pip # Configures pip to your virtual environment
+pip install spacy pydub kokoro soundfile torch # Check if the dependencies are installed
 python -m spacy download en_core_web_sm
 ```
 
-5. **Serp API not returning any search results :** This is a known issue and is being investigated.
+5. **Serp API not returning any search results :**
+This issue has been fixed.
 
 
 > [!IMPORTANT]  
@@ -207,14 +208,23 @@ python -m spacy download en_core_web_sm
 
 ## Contributors
 
-| CONTRIBUTORS | MENTORS | CONTENT WRITER |
-| :------:| :-----:| :-----: |
-| [Name] | Soham Roy | [Name] |
-| [Name] | Yash Kumar Gupta | |
+|    CONTRIBUTORS     |     MENTORS      | CONTENT WRITER |
+| :-----------------: | :--------------: | :------------: |
+|  Kartikeya Trivedi  |    Soham Roy     |     [Name]     |
+|     Naman Singh     | Yash Kumar Gupta |                |
+|   Soham Mukherjee   |                  |                |
+|   Sumedha Gunturi   |                  |                |
+| Souryabrata Goswami |                  |                |
+|   Harshit Agarwal   |                  |                |
+|   Rahul Sutradhar   |                  |                |
+|    Ayush Mohanty    |                  |                |
+|   Shopno Banerjee   |                  |                |
+|    Shubham Gupta    |                  |                |
+|      Nancy Jha      |                  |                |
 
 ## Version
-| Version | Date | Comments |
-| ------- | ---- | -------- |
+| Version | Date       | Comments        |
+| ------- | ---------- | --------------- |
 | 1.0     | 23/02/2025 | Initial release |
 
 ## Future Roadmap

@@ -12,6 +12,7 @@ dependencies = [
     "kokoro>=0.7.16",
     "modal>=0.73.59",
     "moviepy>=2.1.2",
+    "pip>=25.0.1",
     "pydub>=0.25.1",
     "pysrt>=1.1.2",
     "soundfile>=0.13.1",

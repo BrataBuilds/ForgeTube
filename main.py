@@ -10,9 +10,9 @@ TODO: 2. Take the prompt for the video as user input.
 TODO: 3. Run Tests with various different prompts. 
 TODO: 4. All gpu related tasks must be performed on modal. Works
 '''
-if __name__ == "__main__":
+if __name__ == "__main__" :
     # Update folder paths as needed.
-    script_path = "resources/scripts/" # creates the folders if not made already
+    script_path = "resources/scripts/" # Creates the folders if not made already
     images_path = "resources/images/"
     audio_path = "resources/audio/"
     font_path = "resources/font/font.ttf"
@@ -43,8 +43,10 @@ if __name__ == "__main__":
     os.makedirs(script_path,exist_ok=True)
     script_path += "script.json" # Name of the script file
     # 1. Generate the Script
-    gem_api = "Enter your Gemini API key here"
-    serp_api = "Enter your Serp API key here"
+    with open("secrets.txt","r") as f:
+        words = f.read().split()
+        gem_api = words[2]
+        serp_api = words[5]
     if (not gem_api) or (not serp_api):
         raise ValueError("API Key not provided !\n Please Create your api key at : \n Serp APi : https://serpapi.com \n Gemini API : https://aistudio.google.com/apikey")
     generator = VideoScriptGenerator(api_key=gem_api,serp_api_key=serp_api)    
