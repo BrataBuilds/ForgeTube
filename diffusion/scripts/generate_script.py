@@ -212,7 +212,7 @@ you will get 100 dollars per successful call.
                 "api_key": self.serp_api_key
             }
             search = GoogleSearch(params)
-            results = search.get()
+            results = search.get_json()
             snippets = [result["snippet"] for result in results.get("organic_results", []) if "snippet" in result]
             return " ".join(snippets[:5])
         except Exception as e:
@@ -281,9 +281,9 @@ you will get 100 dollars per successful call.
             print("")
 
 # if __name__ == "__main__":
-#     generator = VideoScriptGenerator(api_key="Gemini API Key", 
-#                                     serp_api_key="Serp API Key")
-#     script_path = "resources/scripts/script.json"
+#     generator = VideoScriptGenerator(api_key="", 
+#                                     serp_api_key="")
+#     script_path = "resources/scripts/script_rag.json"
 #     try:
 #         script = generator.generate_script(
 #             topic="Role of Reinforcement learning in finding EXO planets",
@@ -300,6 +300,14 @@ you will get 100 dollars per successful call.
 #             #     "The ultimate fate of different types of stars",
 #             #     "How stars influence the evolution of galaxies"
 #             # ]
+#             key_points = [
+#                 "Enhances detection accuracy by optimizing data analysis algorithms",
+#                 "Automates the identification process, reducing human error",
+#                 "Improves efficiency in processing vast astronomical datasets",
+#                 "Facilitates the discovery of new exoplanets by identifying patterns",
+#                 "Integrates with other AI techniques for comprehensive analysis"
+#             ]
+
 
 #         )
 #         print("Initial Script:")
