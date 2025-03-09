@@ -213,8 +213,6 @@ def create_intro_clip(background_image_path,
         duration (int or float): Duration of the clip in seconds.
         topic (str): The text to display. Defaults to "Welcome to My Video!".
         font_path (str): Path to the TrueType font file.
-        font_size (int): Size of the text font.
-        text_color (str): Color of the text.
 
     Returns:
         VideoClip: A composite video clip with the background and centered text.
@@ -225,7 +223,7 @@ def create_intro_clip(background_image_path,
 
     # Create a TextClip for the intro text
     text_clip = TextClip(text=topic,
-                        size=(900, 90),
+                        size=(900, 300),
                         method='caption',
                         color="white",
                         font=font_path)
@@ -299,7 +297,7 @@ def create_video(image_folder :str,
         raw_clips.append(image_clip)            
     
     #creating the outro clip appending it to raw clips  
-    outro_text = "Thank you for watching! Made by ForgeTube team."
+    outro_text = "Thank you for watching! \n Generated Entirely by AI \n Assembled by ForgeTube."
     outro_clip = create_intro_clip(path_to_background, duration=5, topic=outro_text, font_path=font_path)
     raw_clips.append(outro_clip)
     #     Store individual clips without subtitles for preview / debug 
@@ -365,7 +363,10 @@ def create_video(image_folder :str,
         final_video = CompositeVideoClip(subtitle_clips)
     else:
         final_video = video
-    final_video.write_videofile(output_file, fps=24,threads = os.cpu_count())
+    final_video.write_videofile(output_file,
+                            fps=24,
+                            threads = os.cpu_count()
+                            )
     print(f"Video created successfully: {output_file}")
         
     # except FileNotFoundError:

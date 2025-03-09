@@ -53,7 +53,7 @@ This project demonstrates the potential of combining multiple AI technologies to
 
     `Modal` : For low cost high performance cloud GPU infrastructure.
 
-- **Package Management:**
+-  Package Management: 
 
     `UV`: For fast and efficient dependency management and project setup
 
@@ -115,23 +115,23 @@ The nicest thing about all of this is that you don’t have to set up any infras
 ### 3. Get your Gemini-API Key :
 To obtain a Gemini API key from Google AI Studio, follow these detailed steps:
 
-**Step 1: Sign In to Google AI Studio**
+ Step 1: Sign In to Google AI Studio 
 
 Navigate to [Google AI Studio](https://aistudio.google.com/). Once
  signed in, locate and click on the "Gemini API" tab. This can typically be found in the main navigation menu or directly on the dashboard. On the Gemini API page, look for a button labeled "Get API key in Google AI Studio" and click on it.
 
-**Step 2: Review and Accept Terms of Service**
+ Step 2: Review and Accept Terms of Service 
 
-1. **Review Terms**: A dialog box will appear presenting the Google APIs Terms of Service and the Gemini API Additional Terms of Service. It's essential to read and understand these terms before proceeding.
-2. **Provide Consent**: Check the box indicating your agreement to the terms. Optionally, you can also opt-in to receive updates and participate in research studies related to Google AI.
-3. **Proceed**: Click the "Continue" button to move forward.
+1.  Review Terms : A dialog box will appear presenting the Google APIs Terms of Service and the Gemini API Additional Terms of Service. It's essential to read and understand these terms before proceeding.
+2.  Provide Consent : Check the box indicating your agreement to the terms. Optionally, you can also opt-in to receive updates and participate in research studies related to Google AI.
+3.  Proceed : Click the "Continue" button to move forward.
 
-**Step 3: Create and Secure Your API Key**
+ Step 3: Create and Secure Your API Key 
 
-1. **Generate API Key**: Click on the "Create API key" button. You'll be prompted to choose between creating a new project or selecting an existing one. Make your selection accordingly.
-2. **Retrieve the Key**: Once generated, your unique API key will be displayed. Ensure you copy and store it in a secure location.
+1.  Generate API Key : Click on the "Create API key" button. You'll be prompted to choose between creating a new project or selecting an existing one. Make your selection accordingly.
+2.  Retrieve the Key : Once generated, your unique API key will be displayed. Ensure you copy and store it in a secure location.
 
-**Step 4: Add your Key in `secrets.txt` **
+ Step 4: Add your Key in `secrets.txt`  
 ```
 gemini = Enter your Gemini API key Here
 serp = Enter your serp API key Here
@@ -144,12 +144,10 @@ serp = Enter your serp API key Here
 Serp is used for web scraping google search results on the video topic and gathering additional context to implement Retrieval Augmented Generation (RAG)
 1. Visit [serpapi.com/](https://serpapi.com/) and create an account.
 2. Go to the [dashboard](https://serpapi.com/dashboard), on the top left select Api key.
-3. Copy the API Key and add your Key in `main.py` or `local_main.py`
-```py
-# 1. Generate the Script
+3. Copy the API Key and add your Key in the `secrets.txt file`.
+
 gem_api = "Enter your Gemini API Key here"
 serp_api = "Enter your Serp API key here"
-```
 ### 5. `Kokoro` 
 Run the following commands :
 ```bash
@@ -188,7 +186,7 @@ video_file = "name of the video.mp4 or .mkv"
 ```
 
 
-4. **`no module named pip found`** 
+4.  `no module named pip found`  
 Try running the following :
 ```bash
 uv add pip # Configures pip to your virtual environment
@@ -196,12 +194,12 @@ pip install spacy pydub kokoro soundfile torch # Check if the dependencies are i
 python -m spacy download en_core_web_sm
 ```
 
-5. **Serp API not returning any search results :**
+5.  Serp API not returning any search results : 
 This issue has been fixed.
 
 
 > [!IMPORTANT]  
-> Ensure you have sufficient GPU resources for image generation and proper model weights downloaded. It is recommend to use an **NVDIA** GPU with at least **24 GB or more of VRAM** for locally running the image generation and a high single core performance CPU for video assembly.
+> Ensure you have sufficient GPU resources for image generation and proper model weights downloaded. It is recommend to use an  NVDIA  GPU with at least  24 GB or more of VRAM  for locally running the image generation and a high single core performance CPU for video assembly.
 
 > [!NOTE]
 > Video generation times may vary based on content length , complexity and hardware used.
